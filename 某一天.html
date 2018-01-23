@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function randomDayofMonth(){
+				// 获取当前的时间日期
+				var nowDate = new Date();
+				var month = nowDate.getMonth() + 1;
+				//	当前的月份有几天
+				var days = 0;
+				switch(month){
+					case 1:case 3:
+					case 5:case 7:
+					case 8:case 10:
+					case 12:
+						days = 31;
+						break;
+					case 2:
+						var year = nowDate.getYear();
+						if (year % 100 == 0) {
+							if (year % 400 == 0) {
+								// 闰年
+								days = 29;
+							}else{
+								days = 28;
+							}
+						}else{
+							if (year % 4 == 0) {
+								days = 29;
+							}else{
+								days = 28;
+							}
+						}
+						break;
+					case 4:case 6:
+					case 9:case 11:
+						days = 30;
+						break;
+				}
+				//	向上取整
+				return Math.ceil(Math.random()*days);
+			}
+			var surpriseday = randomDayofMonth();
+			alert(surpriseday);
+		</script>
+	</body>
+</html>
